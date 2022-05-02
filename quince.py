@@ -50,17 +50,11 @@ class Game:
 
     @property
     def available(self):
-        numbers1 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-        numbers2 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-        numbers3 = [1, 2, 3, 4, 5, 6, 7, 8, 9]  # puede que sirva en el futuro.
-
-        for number in numbers1:
-            if number in self.p1.numbers:
-                numbers2.remove(number)
-            if number in self.p2.numbers:
-                numbers2.remove(number)
-
-        return numbers2
+        return [
+            number
+            for number in range(1, 10)
+            if number not in self.p1.numbers + self.p2.numbers
+        ]
 
     @property
     def winner(self):
