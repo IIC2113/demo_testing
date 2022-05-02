@@ -3,6 +3,7 @@ quince.py
 """
 
 
+from itertools import combinations
 from textwrap import dedent
 
 
@@ -17,16 +18,8 @@ class Player:
 
     @property
     def fifteen(self):
-        """
-        Muy bien por seguir las instrucciones:
-        este es el método que debes completar.
-
-        Debe devolver 'None' si es que el jugador no ha conseguido sumar 15.
-        En caso contrario, debe devolver la combinación ganadora como tupla.
-        No te olvides de crear los tests unitarios en el archivo 'tests.py'.
-        """
-
-        pass
+        fifteen = (c for c in combinations(self.numbers, 3) if sum(c) == 15)
+        return next(fifteen, None)
 
     def __repr__(self):
         numbers = (str(number) for number in self.numbers)
